@@ -156,7 +156,7 @@ const [webLoading, setWebLoading] = useState(false);
   onClick={async () => {
     setZipLoading(true);
     try {
-      window.open(`https://mvp-numble-web-1.onrender.com/download-zip/${slug}`, "_blank");
+      window.open(`https://mvp-numble-web-1-ncip.onrender.com/download-zip/${slug}`, "_blank");
     } finally {
       setTimeout(() => setZipLoading(false), 2000); // simulate loading
     }
@@ -170,7 +170,7 @@ const [webLoading, setWebLoading] = useState(false);
   onClick={async () => {
     setWebLoading(true);
     try {
-      const res = await fetch(`https://mvp-numble-web-1.onrender.com/build-web/${slug}`);
+      const res = await fetch(`https://mvp-numble-web-1-ncip.onrender.com/build-web/${slug}`);
       if (!res.ok) throw new Error(await res.text());
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
