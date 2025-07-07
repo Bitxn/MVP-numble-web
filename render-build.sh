@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
+
 set -o errexit
+set -o nounset
 
-echo "🔧 Installing Flutter..."
-
-# Download & extract Flutter SDK
-git clone https://github.com/flutter/flutter.git -b stable
+# Flutter install
+curl -O https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.6-stable.tar.xz
+tar xf flutter_linux_3.19.6-stable.tar.xz
 export PATH="$PWD/flutter/bin:$PATH"
 
-# Preload Flutter so it's ready
-flutter --version
+# Install Flutter dependencies
+flutter precache
 flutter doctor
 
-echo "✅ Flutter installed and ready"
+# Python deps
+pip install -r backend/requirements.txt
