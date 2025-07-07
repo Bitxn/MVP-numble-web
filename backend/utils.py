@@ -61,7 +61,7 @@ def zip_flutter_project(project_path: str) -> str:
 
 def build_web_project(project_path: str) -> str:
     print(f"[DEBUG] Building Flutter web for path: {project_path}")
-    flutter = r"C:\flutter\bin\flutter.bat"  # Update this path if needed
+    flutter = "flutter"
 
     def run_cmd(cmd):
         print(f"Running: {' '.join(cmd)}")
@@ -82,4 +82,5 @@ def build_web_project(project_path: str) -> str:
 
     shutil.make_archive(zip_path.replace(".zip", ""), "zip", build_dir)
     return zip_path
+
 

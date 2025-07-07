@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: numble-backend
+    env: python
+    plan: free
+    region: oregon
+    repo: https://github.com/Bitxn/MVP-numble-web
+    branch: main
+    buildCommand: ./render-build.sh
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    rootDir: backend
+
+    
