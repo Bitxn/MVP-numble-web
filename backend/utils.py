@@ -2,7 +2,7 @@ import os
 import shutil
 import subprocess
 import re
-
+from fastapi import HTTPException
 def slugify(text):
     return re.sub(r'[^a-z0-9]+', '_', text.lower()).strip('_')
 
@@ -61,7 +61,7 @@ def zip_flutter_project(project_path: str) -> str:
 
 def build_web_project(project_path: str) -> str:
     print(f"[DEBUG] Building Flutter web for path: {project_path}")
-    flutter = "flutter"
+    flutter = "flutter"  # use from PATH
 
     def run_cmd(cmd):
         print(f"Running: {' '.join(cmd)}")
@@ -70,15 +70,18 @@ def build_web_project(project_path: str) -> str:
         print("STDERR:", result.stderr)
         result.check_returncode()
 
-    run_cmd([flutter, "clean"])
-    run_cmd([flutter, "pub", "get"])
-    run_cmd([flutter, "build", "web"])
+    try:
+        run_cmd([flutter, "clean"])
+        run_cmd([flutter, "pub", "get"])
+        run_cmd([flutter, "build", "web"])
+    except subprocess.CalledProcessError as e:
+        raise HTTPException(status_code=500, detail=f"Build failed: {e.stderr}")
 
     build_dir = os.path.join(project_path, "build", "web")
     zip_path = f"{project_path}_web.zip"
 
     if not os.path.exists(build_dir):
-        raise FileNotFoundError(f"❌ Web build folder not found: {build_dir}")
+        raise HTTPException(status_code=500, detail=f"❌ Web build folder not found: {build_dir}")
 
     shutil.make_archive(zip_path.replace(".zip", ""), "zip", build_dir)
     return zip_path
