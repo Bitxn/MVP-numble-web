@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-
-# Exit on error
 set -o errexit
 
-# Install Flutter (headless install)
+# Install Flutter
 git clone https://github.com/flutter/flutter.git -b stable --depth 1
 export PATH="$PWD/flutter/bin:$PATH"
 
-# Run flutter doctor just to verify
+# Show Flutter version (for debug)
 flutter doctor
 
-# Install backend dependencies
+# Install Python requirements
 pip install -r backend/requirements.txt
