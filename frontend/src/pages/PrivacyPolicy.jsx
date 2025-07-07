@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
     <>
     <header className="header">
         <div className="logo">
-          <img src="\src\assets\Screenshot_2024-06-21_040611-removebg-preview.png" alt="Logo" />
+          <img src="/src/assets/Screenshot_2024-06-21_040611-removebg-preview.png" alt="Logo" />
         </div>
         <nav className="nav">
   <Link to="/what-it-does" style={{

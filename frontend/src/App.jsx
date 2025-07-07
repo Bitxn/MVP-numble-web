@@ -20,7 +20,7 @@ function App() {
   const handleGenerate = async () => {
   setLoading(true);
   try {
-    const response = await fetch("https://numble-backend-2.onrender.com", {
+    const response = await fetch("https://numble-backend-2.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
