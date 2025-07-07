@@ -11,3 +11,7 @@ services:
     buildFilter:
       paths:
         - backend/**/*
+
+envVars:
+  - key: PYTHONPATH
+    value: backend

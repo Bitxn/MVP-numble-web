@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
 import os
-from generator import generate_flutter_code
+from backend.generator import generate_flutter_code
 from utils import save_flutter_project, zip_flutter_project, build_web_project
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
