@@ -61,7 +61,7 @@ def zip_flutter_project(project_path: str) -> str:
 
 def build_web_project(project_path: str) -> str:
     print(f"[DEBUG] Building Flutter web for path: {project_path}")
-    flutter = "/opt/render/project/flutter/bin/flutter"
+    flutter = "flutter"
 
     def run_cmd(cmd):
         print(f"Running: {' '.join(cmd)}")
