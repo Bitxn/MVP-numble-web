@@ -12,6 +12,4 @@ services:
       paths:
         - backend/**/*
 
-envVars:
-  - key: PYTHON_VERSION
-    value: 3.10.11
+
