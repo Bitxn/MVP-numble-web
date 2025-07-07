@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "prismjs": "^1.30.0",
+    "react-router-dom": "^7.6.3",
+    "react-syntax-highlighter": "^15.6.1",
+    "uvicorn": "^0.0.1-security"
+  }
+}

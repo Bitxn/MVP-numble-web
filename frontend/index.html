@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Flutter Web Builder</title>
+    <script>
+      // Redirect or show a message if the user is on a mobile or tablet
+      const isMobileOrTablet = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isMobileOrTablet) {
+        document.write(`
+          <style>
+            body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+              font-family: sans-serif;
+              background-color: #f2f2f2;
+              text-align: center;
+            }
+          </style>
+          <h2>This website is only supported on desktop devices.</h2>
+        `);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      if (!/Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        import('/src/main.jsx');
+      }
+    </script>
+  </body>
+</html>
+
