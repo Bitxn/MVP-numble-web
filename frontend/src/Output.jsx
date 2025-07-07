@@ -180,6 +180,7 @@ const [webLoading, setWebLoading] = useState(false);
       a.click();
       URL.revokeObjectURL(url);
     } catch (e) {
+      console.error("Web build download error:", e);
       alert("❌ Failed to download web app");
     } finally {
       setWebLoading(false);
