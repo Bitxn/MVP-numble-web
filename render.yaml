@@ -3,7 +3,7 @@ services:
     name: MVP-numble-web-1
     env: python
     buildCommand: ./render-build.sh
-    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port 10000
     plan: free
     envVars:
       - key: GOOGLE_API_KEY
