@@ -20,7 +20,7 @@ function App() {
   const handleGenerate = async () => {
   setLoading(true);
   try {
-    const response = await fetch("https://numble-backend-2.onrender.com/generate", {
+    const response = await fetch("https://mvp-numble-web-1.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
@@ -74,7 +74,7 @@ Generated using prompt: "${prompt}"
 
   const downloadZip = () => {
     
-    window.open(`https://numble-backend-2.onrender.com/download-zip/${slug}`, "_blank");
+    window.open(`https://mvp-numble-web-1.onrender.com/download-zip/${slug}`, "_blank");
   };
 
  
@@ -83,7 +83,7 @@ Generated using prompt: "${prompt}"
 
   const downloadWeb = async () => {
     try {
-      const response = await fetch(`https://numble-backend-2.onrender.com/build-web/${slug}`);
+      const response = await fetch(`https://mvp-numble-web-1.onrender.com/build-web/${slug}`);
       if (!response.ok) {
       const text = await response.text(); // ⬅️ log exact server response
       throw new Error(`Web build failed: ${text}`);
@@ -102,14 +102,14 @@ Generated using prompt: "${prompt}"
   };
   const previewApp = async () => {
   try {
-    const buildResp = await fetch(`https://numble-backend-2.onrender.com/build-web/${slug}`);
+    const buildResp = await fetch(`https://mvp-numble-web-1.onrender.com/build-web/${slug}`);
     if (!buildResp.ok) {
       const errText = await buildResp.text();
       throw new Error(`Web build failed: ${errText}`);
     }
 
     // ✅ Web build successful — open preview
-    window.open(`https://numble-backend-2.onrender.com/preview/${slug}`, "_blank");
+    window.open(`https://mvp-numble-web-1.onrender.com/preview/${slug}`, "_blank");
   } catch (e) {
     console.error("Preview error:", e);
     alert("❌ Failed to build or preview web app");
