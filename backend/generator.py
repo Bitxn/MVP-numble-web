@@ -3,7 +3,7 @@ import os
 
 
 
-api_key = "AIzaSyAkRN6DrJywh4-Wq31atMzNYjc91Xzsk2U"
+api_key = "AIzaSyCfn-yx5iQbUmZu866UELT1DYbv3i85RUQ"
 
 genai.configure(api_key=api_key)
 model = genai.GenerativeModel("gemini-1.5-flash")
