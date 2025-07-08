@@ -192,7 +192,9 @@ function App() {
     await handleGenerate(presetPrompt);
   };
 
-  const handleGenerate = async (customPrompt = "") => {
+  const handleGenerate = async (customPrompt) => {
+    const customPrompt = typeof customPrompt === "string" ? customPrompt : prompt;
+
     setLoading(true);
     try {
       const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
