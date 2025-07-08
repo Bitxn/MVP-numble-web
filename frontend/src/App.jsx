@@ -18,18 +18,19 @@ function App() {
 
   const handleQuickPrompt = async (presetPrompt) => {
     setPrompt(presetPrompt);
-    await handleGenerate();
+    await handleGenerate(presetPrompt);
   };
 
 
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (customPrompt) => {
   setLoading(true);
+  const promptToUse = customPrompt || prompt;
   try {
     const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ promptToUse }),
     });
 
     if (!response.ok) {
@@ -59,7 +60,7 @@ flutter:
 
 const readmeContent = `# ${data.slug}
 
-Generated using prompt: "${prompt}"
+Generated using prompt: "${promptToUse}"
 `;
 
     navigate("/output", {
