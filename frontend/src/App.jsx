@@ -202,7 +202,7 @@ function App() {
       const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ prompt: customPrompt }),
+        body: JSON.stringify({ prompt: String(customPrompt).trim() }),
       });
 
       if (!response.ok) {
