@@ -15,7 +15,6 @@ function App() {
 
   
 
-
   const handleQuickPrompt = async (presetPrompt) => {
     setPrompt(presetPrompt);
     await handleGenerate();
@@ -77,67 +76,6 @@ Generated using prompt: "${prompt}"
   }
   setLoading(false);
 };
-// const handleGenerate = async () => {
-//   setLoading(true);
-//   try {
-//     const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ prompt }),
-//     });
-
-//     if (!response.ok) {
-//       const errorText = await response.text();
-//       console.error("Server error:", response.status, errorText);
-//       alert("❌ Server error during generation");
-//       setLoading(false);
-//       return;
-//     }
-
-//     const data = await response.json();
-//     console.log("Generated app data:", data);
-
-//     const loweredPrompt = prompt.toLowerCase();
-//     const isSupported =
-//       loweredPrompt.includes("calculator") ||
-//       loweredPrompt.includes("santa") ||
-//       loweredPrompt.includes("todo") ||
-//       loweredPrompt.includes("unit");
-
-//     const pubspecCode = `name: ${data.slug}
-// description: A generated Flutter web app.
-// version: 1.0.0
-// environment:
-//   sdk: ">=2.17.0 <4.0.0"
-
-// dependencies:
-//   flutter:
-//     sdk: flutter
-
-// flutter:
-//   uses-material-design: true
-// `;
-
-//     const readmeContent = `# ${data.slug}
-
-// Generated using prompt: "${prompt}"
-// `;
-
-//     navigate("/output", {
-//       state: {
-//         generatedCode: `${data.generated_code}_____${pubspecCode}_____${readmeContent}`,
-//         slug: data.slug,
-//         allowWebDownload: isSupported,
-//       }
-//     });
-
-//   } catch (error) {
-//     console.error("Error during generation:", error);
-//     alert("❌ Failed to generate app");
-//   }
-//   setLoading(false);
-// };
-
 
   const downloadZip = () => {
     
@@ -213,7 +151,6 @@ return (
 
         <button onClick={handleGenerate} disabled={loading}>
           {loading ? "Generating..." : "Generate App"}
-          
         </button>
         <div className="ohoho"><h3>Leading app supported by Hiryu 0.1 model</h3></div>
         <div class="quick-actions">
