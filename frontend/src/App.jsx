@@ -16,19 +16,20 @@ function App() {
   
 
   const handleQuickPrompt = async (presetPrompt) => {
-    setPrompt(presetPrompt);
-    await handleGenerate();
-  };
+  setPrompt(presetPrompt);
+  await handleGenerate(presetPrompt); // ✅ Pass the prompt explicitly
+};
 
 
 
-  const handleGenerate = async () => {
+
+  const handleGenerate = async (customPrompt = prompt) => {
   setLoading(true);
   try {
     const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt }),
+      body: JSON.stringify({ prompt: customPrompt }),
     });
 
     if (!response.ok) {
@@ -38,10 +39,10 @@ function App() {
       setLoading(false);
       return;
     }
-    
 
     const data = await response.json();
     console.log("Generated app data:", data);
+
     const pubspecCode = `name: ${data.slug}
 description: A generated Flutter web app.
 version: 1.0.0
@@ -56,20 +57,17 @@ flutter:
   uses-material-design: true
 `;
 
-const readmeContent = `# ${data.slug}
+    const readmeContent = `# ${data.slug}
 
-Generated using prompt: "${prompt}"
+Generated using prompt: "${customPrompt}"
 `;
 
     navigate("/output", {
-  state: {
-    generatedCode: `${data.generated_code}_____${pubspecCode}_____${readmeContent}`,
-    slug: data.slug
-  }
-});
-// setGeneratedCode(data.generated_code);
-//     setSlug(data.slug);
-
+      state: {
+        generatedCode: `${data.generated_code}_____${pubspecCode}_____${readmeContent}`,
+        slug: data.slug,
+      }
+    });
   } catch (error) {
     console.error("Error during generation:", error);
     alert("❌ Failed to generate app");
@@ -149,7 +147,7 @@ return (
         />
         
 
-        <button onClick={handleGenerate} disabled={loading}>
+        <button onClick={() => handleGenerate({prompt})} disabled={loading}>
           {loading ? "Generating..." : "Generate App"}
         </button>
         <div className="ohoho"><h3>Leading app supported by Hiryu 0.1 model</h3></div>
