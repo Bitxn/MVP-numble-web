@@ -83,8 +83,8 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Output = () => {
   const location = useLocation();
-  // const { generatedCode, slug } = location.state || {};
-  const { generatedCode, slug, allowWebDownload } = location.state || {};
+   const { generatedCode, slug } = location.state || {};
+  //const { generatedCode, slug, allowWebDownload } = location.state || {};
   const [mainCode, pubspecCode, readmeContent] = generatedCode?.split("_____") || ["", "", ""];
   const fileNames = ["lib/main.dart", "pubspec.yaml", "README.md"];
 const fileContents = [mainCode, pubspecCode, readmeContent];
