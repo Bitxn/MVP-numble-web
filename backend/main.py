@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 zip_dir = os.path.join(os.path.dirname(__file__), "web_zips")
+print("ZIP DIR:", zip_dir)
 app.mount("/web_zips", StaticFiles(directory=zip_dir), name="web_zips")
 # ✅ MUST come immediately after app = FastAPI()
 app.add_middleware(
