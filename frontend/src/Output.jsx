@@ -83,7 +83,8 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Output = () => {
   const location = useLocation();
-  const { generatedCode, slug } = location.state || {};
+  // const { generatedCode, slug } = location.state || {};
+  const { generatedCode, slug, allowWebDownload } = location.state || {};
   const [mainCode, pubspecCode, readmeContent] = generatedCode?.split("_____") || ["", "", ""];
   const fileNames = ["lib/main.dart", "pubspec.yaml", "README.md"];
 const fileContents = [mainCode, pubspecCode, readmeContent];
@@ -165,31 +166,81 @@ const [webLoading, setWebLoading] = useState(false);
 >
   {zipLoading ? "📦 Downloading..." : "📦 Download ZIP"}
 </button>
-        <button
+<button
   className="action-btn"
-  onClick={async () => {
+  onClick={() => {
     setWebLoading(true);
-    try {
-      const res = await fetch(`https://mvp-numble-web-1-ncip.onrender.com/build-web/${slug}`);
-      if (!res.ok) throw new Error(await res.text());
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `${slug}_web.zip`;
-      a.click();
-      URL.revokeObjectURL(url);
-    } catch (e) {
-      console.error("Web build download error:", e);
-      alert("❌ Failed to download web app");
-    } finally {
-      setWebLoading(false);
+
+    let url = null;
+    const lowerSlug = slug.toLowerCase();
+
+    // ✅ Match based on known slugs
+    switch (true) {
+      case lowerSlug.includes("santa"):
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/hello_santa_app_web.zip";
+        break;
+      case lowerSlug.includes("calculator"):
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
+        break;
+      case lowerSlug.includes("todo"):
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/todo_list_app_web.zip";
+        break;
+      case lowerSlug.includes("unit") || lowerSlug.includes("converter"):
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
+        break;
+      default:
+        alert("Currently not supported by Hiryu 0.1 model");
+        setWebLoading(false);
+        return;
     }
+
+    // ✅ Trigger download
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${slug}_web.zip`;
+    a.click();
+
+    setWebLoading(false);
   }}
   disabled={webLoading}
 >
   {webLoading ? "🌐 Downloading..." : "🌐 Download Web App"}
 </button>
+        {/* <button
+  className="action-btn"
+  onClick={async () => {
+    if (!allowWebDownload) {
+      alert("Currently not supported by Hiryu 0.1 model");
+      return;
+    }
+
+    setWebLoading(true);
+    // try {
+    //   const res = await fetch(`https://mvp-numble-web-1-ncip.onrender.com/build-web/${slug}`);
+    //   if (!res.ok) throw new Error(await res.text());
+    //   const blob = await res.blob();
+    //   const url = URL.createObjectURL(blob);
+    //   const a = document.createElement("a");
+    //   a.href = url;
+    //   a.download = `${slug}_web.zip`;
+    //   a.click();
+    //   URL.revokeObjectURL(url);
+    // } catch (e) {
+    //   alert("❌ Failed to download web app");
+    // } finally {
+    //   setWebLoading(false);
+    // }
+     const url = `https://your-server.com/prebuilt_webs/${slug}_web.zip`; // 🔁 Replace with real path
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${slug}_web.zip`;
+    a.click();
+     setWebLoading(false);
+  }}
+  disabled={webLoading}
+>
+  {webLoading ? "🌐 Downloading..." : "🌐 Download Web App"}
+</button> */}
       </div>
     </div>
     </>
