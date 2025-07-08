@@ -192,7 +192,7 @@ function App() {
     await handleGenerate(presetPrompt);
   };
 
-  const handleGenerate = async (customPrompt = prompt) => {
+  const handleGenerate = async (customPrompt = "") => {
     setLoading(true);
     try {
       const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
