@@ -379,7 +379,7 @@ function App() {
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Server error:", response.status, errorText);
-        alert("❌ Server error during generation");
+        alert("❌ Server error during generation1");
         setLoading(false);
         return;
       }
