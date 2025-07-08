@@ -3,6 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi.responses import FileResponse
 import os
+from fastapi.staticfiles import StaticFiles
+import os
+
 from backend.generator import generate_flutter_code
 from backend.utils import save_flutter_project, zip_flutter_project, build_web_project
 from fastapi.staticfiles import StaticFiles
@@ -13,6 +16,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+web_zips_path = os.path.join(os.path.dirname(__file__), "web_zips")
+app.mount("/web_zips", StaticFiles(directory=web_zips_path), name="web_zips")
 # ✅ MUST come immediately after app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
