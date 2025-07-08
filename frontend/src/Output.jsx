@@ -180,14 +180,14 @@ const [webLoading, setWebLoading] = useState(false);
         url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/hello_santa_app_web.zip";     
         break;
       case lowerSlug.includes("calculator"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web (1).zip";
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
         
         break;
       case lowerSlug.includes("todo"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/todo_list_app_web (1).zip";
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/todo_list_app_web.zip";
         break;
       case lowerSlug.includes("unit") || lowerSlug.includes("converter"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web (1).zip";
+        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
         break;
       default:
         alert("Currently not supported by Hiryu 0.1 model");
