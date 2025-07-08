@@ -313,9 +313,9 @@ Generated using prompt: "${customPrompt}"
           placeholder="Generate a calculator app..."
         />
 
-        <button onClick={() => handleGenerate(String(prompt).trim())} disabled={loading}>
-          {loading ? "Generating..." : "Generate App"}
-        </button>
+        <button onClick={() => handleGenerate(prompt)} disabled={loading}>
+  {loading ? "Generating..." : "Generate App"}
+</button>
 
         <div className="ohoho"><h3>Leading app supported by Hiryu 0.1 model</h3></div>
 
