@@ -313,7 +313,7 @@ Generated using prompt: "${customPrompt}"
           placeholder="Generate a calculator app..."
         />
 
-        <button onClick={() => handleGenerate(prompt)} disabled={loading}>
+        <button onClick={() => handleGenerate(String(prompt).trim())} disabled={loading}>
           {loading ? "Generating..." : "Generate App"}
         </button>
 
