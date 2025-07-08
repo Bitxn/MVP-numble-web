@@ -18,7 +18,7 @@ function App() {
 
   const handleQuickPrompt = async (presetPrompt) => {
     setPrompt(presetPrompt);
-    await handleGenerate(presetPrompt);
+    await handleGenerate();
   };
 
 
