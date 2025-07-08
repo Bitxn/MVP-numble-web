@@ -18,19 +18,18 @@ function App() {
 
   const handleQuickPrompt = async (presetPrompt) => {
     setPrompt(presetPrompt);
-    await handleGenerate(presetPrompt);
+    await handleGenerate();
   };
 
 
 
-  const handleGenerate = async (customPrompt) => {
+  const handleGenerate = async () => {
   setLoading(true);
-  const promptToUse = customPrompt || prompt;
   try {
     const response = await fetch("https://mvp-numble-web-1-ncip.onrender.com/generate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ promptToUse }),
+      body: JSON.stringify({ prompt }),
     });
 
     if (!response.ok) {
@@ -60,7 +59,7 @@ flutter:
 
 const readmeContent = `# ${data.slug}
 
-Generated using prompt: "${promptToUse}"
+Generated using prompt: "${prompt}"
 `;
 
     navigate("/output", {
@@ -212,8 +211,9 @@ return (
         />
         
 
-        <button onClick={handleGenerate(prompt)} disabled={loading}>
+        <button onClick={handleGenerate} disabled={loading}>
           {loading ? "Generating..." : "Generate App"}
+          
         </button>
         <div className="ohoho"><h3>Leading app supported by Hiryu 0.1 model</h3></div>
         <div class="quick-actions">
