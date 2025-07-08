@@ -196,9 +196,11 @@ const [webLoading, setWebLoading] = useState(false);
 
     // ✅ Trigger download
     const a = document.createElement("a");
-    a.href = url;
-    a.download = `${slug}_web.zip`;
-    a.click();
+a.href = url;
+a.setAttribute("download", `${slug}_web.zip`);
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
 
     setWebLoading(false);
   }}
