@@ -16,6 +16,12 @@ function App() {
   
 
 
+  const handleQuickPrompt = async (presetPrompt) => {
+    setPrompt(presetPrompt);
+    await handleGenerate(presetPrompt);
+  };
+
+
 
   const handleGenerate = async () => {
   setLoading(true);
@@ -151,10 +157,10 @@ return (
         <div class="quick-actions">
 
           
-  <button class="pill-btn">➕ Calculator App</button>
-  <button class="pill-btn">🎅 Hello Santa App</button>
-  <button class="pill-btn">📝 Todo List App</button>
-  <button class="pill-btn">⚖️ Unit converter App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>➕ Calculator App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>🎅 Hello Santa App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>📝 Todo List App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>⚖️ Unit converter App</button>
   
 </div>
 
