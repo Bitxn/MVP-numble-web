@@ -170,40 +170,44 @@ const [webLoading, setWebLoading] = useState(false);
   className="action-btn"
   onClick={() => {
     setWebLoading(true);
+    alert("Currently not supported by Hiryu 0.1 model");
+    setWebLoading(false);
+    return;
 
     let url = null;
     const lowerSlug = slug.toLowerCase();
 
     // ✅ Match based on known slugs
-    switch (true) {
-      case lowerSlug.includes("santa"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/hello_santa_app_web.zip";     
-        break;
-      case lowerSlug.includes("calculator"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
+    // switch (true) {
+    //   case lowerSlug.includes("santa"):
+    //     url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/hello_santa_app_web.zip";     
+    //     break;
+    //   case lowerSlug.includes("calculator"):
+    //     url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
         
-        break;
-      case lowerSlug.includes("todo"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/todo_list_app_web.zip";
-        break;
-      case lowerSlug.includes("unit") || lowerSlug.includes("converter"):
-        url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
-        break;
-      default:
-        alert("Currently not supported by Hiryu 0.1 model");
-        setWebLoading(false);
-        return;
-    }
+    //     break;
+    //   case lowerSlug.includes("todo"):
+    //     url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/todo_list_app_web.zip";
+    //     break;
+    //   case lowerSlug.includes("unit") || lowerSlug.includes("converter"):
+    //     url = "https://mvp-numble-web-1-ncip.onrender.com/web_zips/unit_converter_app_web.zip";
+    //     break;
+    //   default:
+    //   alert("Currently not supported by Hiryu 0.1 model");
+    //   setWebLoading(false);
+    //   return;
+    // }
 
     // ✅ Trigger download
-    const a = document.createElement("a");
-a.href = url;
-a.setAttribute("download", `${slug}_web.zip`);
-document.body.appendChild(a);
-a.click();
-document.body.removeChild(a);
+    
+//     const a = document.createElement("a");
+// a.href = url;
+// a.setAttribute("download", `${slug}_web.zip`);
+// document.body.appendChild(a);
+// a.click();
+// document.body.removeChild(a);
 
-    setWebLoading(false);
+//     setWebLoading(false);
   }}
   disabled={webLoading}
 >
