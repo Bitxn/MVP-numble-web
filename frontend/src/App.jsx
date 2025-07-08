@@ -219,9 +219,9 @@ return (
 
           
   <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>➕ Calculator App</button>
-  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>🎅 Hello Santa App</button>
-  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>📝 Todo List App</button>
-  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Calculator App")}>⚖️ Unit converter App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Hello Santa App")}>🎅 Hello Santa App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Todo List App")}>📝 Todo List App</button>
+  <button class="pill-btn" onClick={() => handleQuickPrompt("Create a Unit Converter App")}>⚖️ Unit converter App</button>
   
 </div>
 
