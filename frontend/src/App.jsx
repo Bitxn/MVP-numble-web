@@ -194,6 +194,7 @@ function App() {
 
   const handleGenerate = async (customPrompt) => {
     const customPrompt = typeof customPrompt === "string" ? customPrompt : prompt;
+    console.log("Generating with prompt:", typeof customPrompt, customPrompt);
 
     setLoading(true);
     try {
