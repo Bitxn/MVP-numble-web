@@ -6,8 +6,8 @@ import os
 from fastapi.staticfiles import StaticFiles
 import os
 
-from backend.generator import generate_flutter_code
-from backend.utils import save_flutter_project, zip_flutter_project, build_web_project
+from generator import generate_flutter_code
+from utils import save_flutter_project, zip_flutter_project, build_web_project
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
