@@ -77,7 +77,7 @@
 // export default Output;
 import { useLocation } from "react-router-dom";
 import "./Output.css";
-import logo from '../assets/logo.png'
+import logo from './assets/logo.png';
 import { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';

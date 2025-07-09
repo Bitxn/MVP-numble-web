@@ -342,7 +342,7 @@
 // export default App;
 import { useState } from "react";
 import "./App.css";
-import logo from '../assets/logo.png';
+import logo from './assets/logo.png';
 import { useNavigate, Link } from "react-router-dom";
 
 function App() {
