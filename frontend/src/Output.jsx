@@ -77,6 +77,7 @@
 // export default Output;
 import { useLocation } from "react-router-dom";
 import "./Output.css";
+import logo from '../assets/logo.png'
 import { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -117,14 +118,14 @@ const [webLoading, setWebLoading] = useState(false);
 
     <header className="header">
         <div className="logo">
-          <img src="/src/assets/Screenshot_2024-06-21_040611-removebg-preview.png" alt="Logo" />
+          <img src={logo} alt="Logo" />
         </div>
-        <nav className="nav">
+        {/* <nav className="nav">
           <a href="#what">What it does</a>
           <a href="#dev">Privacy Policy</a>
           <a href="#about">About Us</a>
           <a href="#get">Get App</a>
-        </nav>
+        </nav> */}
       </header>
     <div className="output-container">
       {/* Left Panel: Files */}

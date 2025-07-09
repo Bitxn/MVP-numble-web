@@ -342,6 +342,7 @@
 // export default App;
 import { useState } from "react";
 import "./App.css";
+import logo from '../assets/logo.png';
 import { useNavigate, Link } from "react-router-dom";
 
 function App() {
@@ -463,7 +464,7 @@ Generated using prompt: "${customPrompt}"
     <>
       <header className="header">
         <div className="logo">
-          <img src="/src/assets/Screenshot_2024-06-21_040611-removebg-preview.png" alt="Logo" />
+          <img src={logo} alt="Logo" />
         </div>
         <nav className="nav">
           <Link to="/what-it-does">What it does</Link>

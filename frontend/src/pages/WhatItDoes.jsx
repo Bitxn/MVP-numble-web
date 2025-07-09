@@ -8,13 +8,16 @@
 // export default WhatItDoes;
 import { Link } from "react-router-dom";
 
+import preview from '../assets/preview.mp4';  
+import logo from '../assets/logo.png';
+
 
 const WhatItDoes = () => {
   return (
     <>
     <header className="header">
         <div className="logo">
-          <img src="/src/assets/Screenshot_2024-06-21_040611-removebg-preview.png" alt="Logo" />
+          <img src={logo} alt="Logo" />
         </div>
         <nav className="nav">
   <Link to="/what-it-does" style={{
@@ -49,7 +52,7 @@ const WhatItDoes = () => {
       </header>
     <div className="page" style={{ padding: "2rem", maxWidth: "900px", margin: "0 auto" }}>
   <video controls width="100%" style={{ borderRadius: "8px", marginBottom: "1rem" }}>
-    <source src="/src/assets/Screen Recording1 2025-07-07 015621.mp4" type="video/mp4" />
+    <source src={preview} type="video/mp4" />
     Your browser does not support the video tag.
   </video>
 
