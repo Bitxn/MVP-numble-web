@@ -8,8 +8,8 @@
 // export default WhatItDoes;
 import { Link } from "react-router-dom";
 
-import preview from './assets/preview.mp4';  
-import logo from './assets/logo.png';
+import preview from '../assets/preview.mp4';  
+import logo from '../assets/logo.png';
 
 
 const WhatItDoes = () => {
