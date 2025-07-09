@@ -157,7 +157,7 @@ const [webLoading, setWebLoading] = useState(false);
   onClick={async () => {
     setZipLoading(true);
     try {
-      window.open(`http://127.0.0.1:8000/download-zip/${slug}`, "_blank");
+      window.open(`http://13.54.22.96:8000/download-zip/${slug}`, "_blank");
     } finally {
       setTimeout(() => setZipLoading(false), 2000); // simulate loading
     }

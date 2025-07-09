@@ -370,7 +370,7 @@ function App() {
 
     setLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:8000/generate", {
+      const response = await fetch("http://13.54.22.96:8000/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ prompt: customPrompt }),
@@ -421,12 +421,12 @@ Generated using prompt: "${customPrompt}"
   };
 
   const downloadZip = () => {
-    window.open(`http://127.0.0.1:8000/download-zip/${slug}`, "_blank");
+    window.open(`http://13.54.22.96:8000/download-zip/${slug}`, "_blank");
   };
 
   const downloadWeb = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/build-web/${slug}`);
+      const response = await fetch(`http://13.54.22.96:8000/build-web/${slug}`);
       if (!response.ok) {
         const text = await response.text();
         throw new Error(`Web build failed: ${text}`);
@@ -446,13 +446,13 @@ Generated using prompt: "${customPrompt}"
 
   const previewApp = async () => {
     try {
-      const buildResp = await fetch(`http://127.0.0.1:8000/build-web/${slug}`);
+      const buildResp = await fetch(`http://13.54.22.96:8000/build-web/${slug}`);
       if (!buildResp.ok) {
         const errText = await buildResp.text();
         throw new Error(`Web build failed: ${errText}`);
       }
 
-      window.open(`http://127.0.0.1:8000/preview/${slug}`, "_blank");
+      window.open(`http://13.54.22.96:8000/preview/${slug}`, "_blank");
     } catch (e) {
       console.error("Preview error:", e);
       alert("❌ Failed to build or preview web app");
