@@ -124,6 +124,18 @@ async def preview_app(slug: str):
 
     with open(index_path, "r", encoding="utf-8") as f:
         return HTMLResponse(f.read())
+    
+
+@app.get("/docker-build/{slug}")
+def docker_build(slug: str):
+    try:
+        build_success = build_with_docker(slug)
+        if not build_success:
+            raise HTTPException(status_code=500, detail="Build failed.")
+        return {"status": "success", "message": f"Docker build started for {slug}"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 
 

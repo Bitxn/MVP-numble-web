@@ -86,4 +86,29 @@ def build_web_project(project_path: str) -> str:
     shutil.make_archive(zip_path.replace(".zip", ""), "zip", build_dir)
     return zip_path
 
+def build_with_docker(slug: str) -> bool:
+    try:
+        project_path = os.path.join("generated_apps", slug)
+        if not os.path.exists(project_path):
+            raise Exception("Project path does not exist.")
+
+        dockerfile_path = os.path.abspath("Dockerfile")
+
+        build_command = [
+            "docker", "run", "--rm",
+            "-v", f"{os.path.abspath(project_path)}:/app",
+            "cirrusci/flutter", "bash", "-c",
+            "cd /app && flutter build web"
+        ]
+
+        result = subprocess.run(build_command, capture_output=True, text=True)
+        if result.returncode != 0:
+            print("Docker build failed:", result.stderr)
+            return False
+
+        return True
+    except Exception as e:
+        print("Error in build_with_docker:", e)
+        return False
+
 

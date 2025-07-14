@@ -444,6 +444,18 @@ Generated using prompt: "${customPrompt}"
       alert("❌ Failed to build or download web app");
     }
   };
+  const buildweb = async () => {
+    try {
+    const res = await fetch(`http://13.54.22.96:8000/docker-build/${slug}`);
+    if (!res.ok) {
+      const txt = await res.text();
+      throw new Error(txt);
+    }
+    alert("✅ Build started successfully!");
+  } catch (err) {
+    alert("❌ Docker Build Failed: " + err.message);
+  }
+}
 
   const previewApp = async () => {
     try {
@@ -504,6 +516,7 @@ Generated using prompt: "${customPrompt}"
             <button onClick={downloadZip}>📦 Download Code ZIP</button>
             <button onClick={downloadWeb}>🌐 Download Web App</button>
             <button onClick={previewApp}>🔍 Preview App</button>
+            <button onclick={buildweb}> Build Web</button>
           </>
         )}
       </div>
